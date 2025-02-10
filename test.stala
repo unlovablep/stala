@@ -1,0 +1,84 @@
+# Print "9 + 10 = 19":
+NUL
+
+NUM 9
+NUM 10
+IDENT add
+CALL
+IDENT chr
+CALL
+
+STR "9 + 10 = "
+IDENT print
+CALL
+
+# Print "!dlorW, olleH":
+NUL
+NUM 72
+NUM 101 
+NUM 108
+NUM 108
+NUM 111
+NUM 44
+NUM 32
+NUM 87
+NUM 111
+NUM 114
+NUM 108
+NUM 100
+NUM 33 
+IDENT print
+CALL
+
+# Print "5" by counting from 0 to 5:
+NUL
+NUM 0
+LABEL five
+  NUM 1
+  IDENT add
+  CALL
+
+  IDENT copy
+  CALL
+
+  NUM 5
+  IDENT eq
+  CALL
+  IDENT not
+  CALL
+
+  IDENT five
+  IDENT gotoif
+  CALL
+
+IDENT chr
+CALL
+IDENT print
+CALL
+
+# Function that prints "1":
+
+# FUNCTIONs are treated like labels, but when run they'll get skipped over (until the RETURN)
+FUNCTION printone
+  NUL
+  NUM 1
+  IDENT ichr
+  CALL
+  IDENT print
+  CALL
+RETURN
+
+# call, but return here after if RETURN is called
+# FUNCALL is just CALL on goto essentially, but it also pushes a return line to the return stack
+IDENT printone
+FUNCALL
+IDENT printone
+FUNCALL
+IDENT printone
+FUNCALL
+
+NUL
+STR "And we're done!"
+IDENT print
+CALL
+
